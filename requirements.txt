@@ -1,0 +1,9 @@
+fastapi[all]
+uvicorn
+langchain
+langgraph
+langchain-ollama
+requests
+beautfiulsoup4
+python-dotenv
+streamlit
