@@ -59,26 +59,40 @@ class AgentState(TypedDict):
 def classify_lead(state: AgentState) -> dict:
     """
     First node: Classifies the lead's intent based on their message.
+    This uses few-shot prompting to make it more accurate.
     """
-    print("---NODE: CLASSIFYING LEAD---")
+    print("---NODE: CLASSIFYING LEAD (V2 - Few-Shot)---")
     user_message = state["lead_input"]["message"]
 
     classification_prompt = HumanMessage(
         content=f"""
-        You are a lead classification expert. Based on the user's message, classify it into ONE of the following categories:
+        You are a lead classification expert for an AI consultancy. Your task is to classify a user's message into one of the following categories:
         'sales_query', 'customer_support', 'job_application', 'spam'.
 
-        User's message: "{user_message}"
+        Here are some examples to guide you:
 
-        Return a single JSON object with one key, "classification", and the category as the value.
+        ---
+        EXAMPLE 1:
+        Message: "Hi, my name is Sarah from TechCorp. We are looking for help building a custom RAG pipeline and have a budget of around $25,000. Can we book a call?"
+        Classification: "sales_query"
+        ---
+        EXAMPLE 2:
+        Message: "Hello, I am a recent graduate with a passion for AI. I saw a role on your website and would like to submit my resume for the AI Research Intern position."
+        Classification: "job_application"
+        ---
+
+        Now, classify the following message.
+        
+        MESSAGE TO CLASSIFY:
+        "{user_message}"
+
+        Return a single JSON object with one key, "classification", and the determined category as the value.
         """
     )
 
     response = llm.invoke([classification_prompt])
     result = json.loads(response.content)
-    classification = result.get(
-        "classification", "spam"
-    )  # Default to spam if parsing fails
+    classification = result.get("classification", "spam")
 
     print(f"Classification result: {classification}")
     return {"classification": classification}
@@ -162,12 +176,12 @@ def decide_next_step(state: AgentState) -> str:
 # 3. Define the connections (edges) between the nodes
 workflow.set_entry_point("classify_lead")
 
-# After classification, our router function 'decide_next_step' is called.
+# After classification, router function 'decide_next_step' is called.
 workflow.add_conditional_edges(
     "classify_lead", decide_next_step, {"enrich_lead": "enrich_lead", END: END}
 )
 
-# After enrichment, we always proceed to scoring and drafting.
+# After enrichment, proceed to scoring and drafting.
 workflow.add_edge("enrich_lead", "score_and_draft")
 
 # The scoring node is a final step in the sales path.
@@ -179,7 +193,7 @@ agent_app = workflow.compile()
 print("LangGraph agent app compiled successfully.")
 
 
-# --- FASTAPI APP INITIALIZATION ---
+# --- FASTAPI APP INITIALIZATION FOR A SCALABLE BACKEND ---
 app = FastAPI(
     title="AI Lead Qualifier",
     description="An API that uses an LLM agent to classify, enrich, and score inbound leads.",
