@@ -1,5 +1,6 @@
 # main.py
 # --- Imports ---
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel, EmailStr
 import operator
@@ -9,6 +10,8 @@ from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_ollama import ChatOllama
 from langgraph.graph import StateGraph, END
 from tools import get_website_title, add_lead_to_db, init_db
+
+load_dotenv()
 
 
 # --- PYDANTIC MODELS (Data Contracts) ---
