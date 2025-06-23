@@ -1,5 +1,9 @@
 # Project introduction and structure
-The "Leads-Qualifier-Agent" is an autonomous agent that receives, analyzes, enriches, and prioritizes new business leads from a website contact form. Built using LangGraph and LangChain, and powered by a locally-run open-source LLM through Ollama, this agent can automate manual administrative tasks and increase sales efficiency
+The "Leads-Qualifier-Agent" is an autonomous agent that receives, analyzes, enriches, and prioritizes new business leads from a website contact form. Built using LangGraph and LangChain, and powered by a locally-run open-source LLM through Ollama, this agent can automate manual administrative tasks and increase sales efficiency.
+
+### Visual flowchart of real-time usage:
+<img width="645" alt="Screenshot 2025-06-22 at 10 20 16 pm" src="https://github.com/user-attachments/assets/170d8018-6c93-43e1-bc03-865e531450fc" />
+
 
 **A brief description of each file in this directory:**
 - main.py: The core application. Contains the FastAPI server, the LangGraph agent definition (state, nodes, edges), and the API endpoint logic.
