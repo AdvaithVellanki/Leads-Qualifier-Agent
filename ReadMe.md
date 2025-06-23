@@ -1,23 +1,15 @@
-Project Structure
-
+# Project Structure
 A brief description of each file in this directory:
-
-    main.py: The core application. Contains the FastAPI server, the LangGraph agent definition (state, nodes, edges), and the API endpoint logic.
-
-    tools.py: A module containing the standalone functions (tools) that the AI agent uses, such as the web scraper and database writer.
-
-    streamlit_app.py: A simple web-based user interface for demonstrating the system. It acts as a client that sends requests to the FastAPI backend.
-
-    requirements.txt: A list of all the Python dependencies required to run the project.
-
-    leads.db: The SQLite database file that is automatically created to store the processed lead data.
-
-    .env: (To be created by user) A file to store secret API keys for services like LangSmith.
-
-    test_tools.py: (Optional) A script used during development to test the functions in tools.py independently.
+- main.py: The core application. Contains the FastAPI server, the LangGraph agent definition (state, nodes, edges), and the API endpoint logic.
+- tools.py: A module containing the standalone functions (tools) that the AI agent uses, such as the web scraper and database writer.
+- streamlit_app.py: A simple web-based user interface for demonstrating the system. It acts as a client that sends requests to the FastAPI backend.
+- requirements.txt: A list of all the Python dependencies required to run the project.
+- leads.db: The SQLite database file that is automatically created to store the processed lead data.
+- .env: (To be created by user) A file to store secret API keys for services like LangSmith.
+- test_tools.py: A script used during development to test the functions in tools.py independently. (Run once to create the sqlite database if not existing)
 
 
-Setup & Installation
+## Setup & Installation**
 
 Follow these steps to set up the project environment.
 1. Prerequisites
