@@ -33,10 +33,9 @@ To visualize the agent's workflow, you can use LangSmith. Follow the below steps
 - Create a new project and an API key.
 - Create a file named .env in the project root and add your keys:
 Then, inside this projects `.env` file:
-
-    `LANGCHAIN_TRACING_V2="true"`
-    `LANGCHAIN_API_KEY="YOUR_LANGSMITH_API_KEY"`
-    `LANGCHAIN_PROJECT="YOUR_PROJECT_NAME"`
+1. `LANGCHAIN_TRACING_V2="true"`
+2. `LANGCHAIN_API_KEY="YOUR_LANGSMITH_API_KEY"`
+3. `LANGCHAIN_PROJECT="YOUR_PROJECT_NAME"`
 
 # Running the End-to-End System
 
