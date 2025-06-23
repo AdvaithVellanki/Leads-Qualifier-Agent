@@ -25,11 +25,9 @@ Then, open the terminal on your device.
 4. Install Dependencies
 Install all required packages using the requirements.txt file: `pip install -r requirements.txt`
 
-4. Set Up Local LLM
+4. Set Up Local LLM: Pull the llama3:8b model, which will be used by the agent: `ollama pull llama3:8b`
 
-Pull the llama3:8b model, which will be used by the agent: `ollama pull llama3:8b`
-
-5. Configure LangSmith
+5. Configure LangSmith:
 To visualize the agent's workflow, you can use LangSmith.
 - Sign up for a free account at smith.langchain.com.
 - Create a new project and an API key.
