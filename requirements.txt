@@ -4,6 +4,6 @@ langchain
 langgraph
 langchain-ollama
 requests
-beautfiulsoup4
+beautifulsoup4
 python-dotenv
 streamlit
