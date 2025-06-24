@@ -19,7 +19,7 @@ The "Leads-Qualifier-Agent" is an autonomous agent that receives, analyzes, enri
 
 Follow these steps to set up the project environment.
 1. Prerequisites
-Ensure you have Python 3.8+ installed.
+Ensure you have Python 3.10+ installed.
 Install Ollama on your machine.
 Then, open the terminal on your device.
 
